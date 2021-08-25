@@ -12,7 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Generate md5 list
-        run: find  -type f -exec md5sum {}>>md5_list.txt +
+        run: |
+         find ./data -type f -exec md5sum {} > md5_list.txt +
+         cat md5_list.txt
       - name: Upload md5 file
         uses: actions/upload-artifact@v2
         with:
